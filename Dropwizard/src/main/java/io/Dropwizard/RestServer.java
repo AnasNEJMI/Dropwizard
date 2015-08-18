@@ -1,3 +1,5 @@
+package io.Dropwizard;
+
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
@@ -48,3 +50,4 @@ public class RestServer {
 	    }
 
 }
+

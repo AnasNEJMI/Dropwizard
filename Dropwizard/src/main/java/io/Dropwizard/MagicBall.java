@@ -1,3 +1,4 @@
+package io.Dropwizard;
 
 
 public class MagicBall {
