@@ -1,16 +1,21 @@
 package io.Dropwizard;
 
 
+import javax.annotation.Nonnull;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.GET;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-@Path("/magicball")
+@Path("/magicball/color/{color}/size/{size}/shape/{shape}")
+@Consumes(MediaType.APPLICATION_JSON)
+@Produces(MediaType.APPLICATION_JSON)
 public class RestServer {
+
 
 	@GET
 	
@@ -18,36 +23,22 @@ public class RestServer {
 	
 	    @Produces(MediaType.APPLICATION_JSON)
 	
-	    public MagicBall getMagicBall(){
+	    public MagicBall getMagicBall(@PathParam("color") String color,@PathParam("size") final String size, 
+	    	    @Nonnull @PathParam("size") final String shape ){
 	
 	        MagicBall magic = new MagicBall();
 	
-	        magic.setColor("Red");
+	        magic.setColor(color);
 	
-	        magic.setSize("100");
+	        magic.setSize(size);
 	
-	        magic.setShape("Circle");
+	        magic.setShape(shape);
 
 	        
 	        return magic;
 	
 	    }
-	
-	     
-	
-	    @POST
-	
-	    @Path("/post")
-	
-	    @Consumes(MediaType.APPLICATION_JSON)
-	
-	    public Response postMagicBall(MagicBall magic){
-	
-	        String result = "Record entered: "+ magic;
-	
-	        return Response.status(201).entity(result).build();
-	
-	    }
+
 
 }
 
