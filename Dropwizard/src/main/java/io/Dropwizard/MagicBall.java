@@ -1,12 +1,33 @@
 package io.Dropwizard;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 
 public class MagicBall {
-
+		@JsonProperty("color")
         private String color;
+		
+		@JsonProperty("size")
         private String size;
+		
+		@JsonProperty("shape")
         private String shape;
+		
+		
+		
+		public MagicBall(){
+			this.color="Green";
+        	this.size="10";
+        	this.shape="Square";
+		}
 
+        public MagicBall(String c, String s, String sh){
+        	
+        	this.color=c;
+        	this.size=s;
+        	this.shape=sh;
+        	
+        }
 
         public void setColor(String color)
         {
@@ -20,8 +41,8 @@ public class MagicBall {
 
             public float getColorValue()
             {
-                int value=0;
-                switch (color) {
+            	float value=0;;
+                switch (this.getColor()) {
                     case "Red":
                         value = 1;
                         break;
@@ -66,15 +87,16 @@ public class MagicBall {
 
             public float getShapeValue()
             {
-                int value=0;
-                switch (shape) {
-                    case "circle":
+                int value = 0;
+                
+                switch (this.getShape()) {
+                    case "Circle":
                         value = 10;
                         break;
-                    case "square":
+                    case "Square":
                         value = 30;
                         break;
-                    case "triangle":
+                    case "Triangle":
                         value = 50;
                         break;
                 }
